@@ -1,0 +1,8 @@
+from sympy.ntheory import sqrt_mod
+
+a = 10
+p = 13
+
+roots = sqrt_mod(a, p, all_roots=True)
+print("Roots:", roots)
+print("Smaller root:", min(roots))
