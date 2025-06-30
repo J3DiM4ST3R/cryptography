@@ -1,0 +1,25 @@
+import pandas as pd
+
+# List of "stuck" third number candidates provided by the user
+third_numbers = [38, 2, 5, 8, 11, 14, 18, 21, 28, 31, 34]
+
+# Generate combinations
+# We'll test combinations in reasonable intervals to reduce the number of total combinations
+# For example, first and second numbers can be every 5 steps from 0 to 39
+
+first_numbers = list(range(0, 40, 5))  # 0, 5, 10, ..., 35
+second_numbers = list(range(0, 40, 5))  # 0, 5, 10, ..., 35
+
+# Create the combination list
+combinations = []
+for third in third_numbers:
+    for first in first_numbers:
+        for second in second_numbers:
+            if first != second and second != third and first != third:
+                combinations.append((first, second, third))
+
+# Convert to DataFrame
+df_combinations = pd.DataFrame(combinations, columns=["First", "Second", "Third"])
+
+# Display DataFrame to user
+import ace_tools as tools; tools.display_dataframe_to_user(name="Lock Combinations", dataframe=df_combinations)
